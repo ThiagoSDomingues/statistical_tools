@@ -1,5 +1,6 @@
 # Importing all necessary libraries 
 
+import numpy as np
 from sklearn.decomposition import PCA
 from numpy.linalg import inv
 from sklearn.preprocessing import StandardScaler
@@ -20,4 +21,25 @@ u, s, vh = np.linalg.svd(SS.fit_transform(Y), full_matrices=True)
 
 print(f'shape of u: {u.shape}, shape of s: {s.shape}, shape of vh: {vh.shape})
 ### improvement: create a verification here! the shape of each component here must be right! ### 
-### must be -- u: (n_design_points, n_design_points); s: (n_features,); v:(n_features, n_features)
+### must be -- u: (n_design_points, n_design_points); s: (n_features,); v:(n_features, n_features) ###  
+
+# print the explained ratio of variance
+fig, (ax1, ax2) = plt.subplots(1,2,figsize=(7,4))
+
+# number of principal components to plot
+n_pc_to_plot = 10 # make it more general or make 10 the standard number of pc's to plot
+
+importance = np.square(s[:n_pc_to_plot]/math.sqrt(u.shape[0]-1))
+cumulative_importance = np.cumsum(importance)/np.sum(importance)
+
+idx = np.arange(1, 1+len(importance)) # PC index
+
+# barplots 
+ax1.bar()
+ax1.set_xlabel()
+ax1.set_ylabel()
+ax2.bar()
+ax2.set_xlabel()
+ax2.set_ylabel()
+plt.tight_layout(True)
+plt.show()
