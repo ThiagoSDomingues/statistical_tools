@@ -46,3 +46,15 @@ ax2.set_xlabel(r"The first $n$ PC")
 ax2.set_ylabel("Fraction of total variance")
 plt.tight_layout(True)
 plt.show()
+
+n_pcs = 10 # example. This must be chose by after the explained variance analysis by some criteria, or some threshold.  
+
+# After check the explained variance we need to whiten and project data to principal component axis, only keeping the first n_pcs PCs.
+pc_tf_data = u[:,0:n_pcs] * math.sqrt(u.shape[0]-1)
+print(f'Shape of PC transformed data {pc_tf_data.shape}')
+
+# Scale Transformation from PC space to original data space
+inverse_tf_matrix = np.diag(s[0:n_pcs]) @ vh[0:n_pcs,:] * SS.scale_.reshape(1,Y_flat.shape[1])/ math.sqrt(u.shape[0]-1)
+
+#### what's necessary for each emulator? ####  
+# pc_tf_data, inverse_tf_matrix, SS, anything else?
