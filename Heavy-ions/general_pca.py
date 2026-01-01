@@ -36,11 +36,12 @@ cumulative_importance = np.cumsum(importance)/np.sum(importance)
 idx = np.arange(1, 1+len(importance)) # PC index
 
 # barplots 
-ax1.bar()
-ax1.set_xlabel()
-ax1.set_ylabel()
-ax2.bar()
-ax2.set_xlabel()
-ax2.set_ylabel()
+ax1.bar(idx, importance)
+ax1.set_xlabel("PC index")
+ax1.set_ylabel("Variance")
+
+ax2.bar(idx, cumulative_importance)
+ax2.set_xlabel(r"The first $n$ PC")
+ax2.set_ylabel("Fraction of total variance")
 plt.tight_layout(True)
 plt.show()
