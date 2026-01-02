@@ -35,4 +35,20 @@ class ParameterBounds:
         """Clip points to bounds."""
         return np.clip(X, self.lower, self.upper)
 
-### Next Step: class DesignGenerator
+class DesignGenerator:
+    """
+    Flexible design point generator for Gaussian Process emulators.
+    Supports multiple sampling strategies including adaptive methods.
+    """
+    
+    def __init__(
+        self,
+        bounds: Union[ParameterBounds, Tuple[List, List]],
+        seed: Optional[int] = None
+    
+    ):
+        """
+        Initialize design generator.
+        
+        Parameters:
+        -----------
