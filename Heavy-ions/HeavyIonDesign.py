@@ -52,3 +52,20 @@ class DesignGenerator:
         
         Parameters:
         -----------
+        bounds : ParameterBounds or tuple of (lower, upper)
+            Parameter space bounds
+        seed : int, optional
+            Random seed for reproducibility
+        """
+        if isinstance(bound, tuple):
+            self.bounds = ParameterBounds(bounds[0], bounds[1])
+        else:
+            self.bounds = bounds
+
+        self.seed = seed
+        self.rng = np.random.RandomState(seed)
+        self.dim = self.bounds.dim
+
+        print(f"✓ Design generator initialized: {self.dim}D parameter space")
+
+        ### Next Steps: generate function ###
