@@ -106,5 +106,14 @@ class DesignGenerator:
     if method no in method_map:
         raise ValueError(f"Unknown method '{method}'. Avilable: {List(method_map.keys())}")
     print(f"Generating {n_points} design points using '{method}' method...")
+    X = method_map[method](n_points, **kwargs)
+    
+    # Validate output.
+    assert X.shape == (n_points, self.dim), f"Shape mismatch: {X.shape}"
+    assert np.all(X >= self.bounds.lower) and np.all(X <= self.bounds.upper), \ 
+        "Points outside bounds"
+    
+    print(f" ✓ Generated {n_points} design points)
+    return X
                        
 
