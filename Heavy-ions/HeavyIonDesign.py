@@ -68,4 +68,43 @@ class DesignGenerator:
 
         print(f"✓ Design generator initialized: {self.dim}D parameter space")
 
-        ### Next Steps: generate function ###
+    def generate(
+        self,
+        n_points: int,
+        method: Literal[
+            'random', 'lhs', 'sobol', 'halton', 'maximin', 'minimax', 'uniform_grid', 'sphere_packing'
+        ] = 'lhs', 
+        **kwargs
+    ) -> np.ndarray:
+    """
+    Generate design points.
+    
+    Parameters:
+    -----------
+    n_points : int
+        Number of design points
+    method : str
+        Sampling method
+    **kwargs : additional method-specific parameters
+    
+    Returns:
+    --------
+    X : np.ndarray, shape (n_points, dim)
+        Design points in original parameter space
+    """
+    method_map = {
+        'random': self._random_sampling,
+        'lhs': self._latin_hypercube, 
+        'sobol': self._sobol_sequence, 
+        'halton': self._halton_sequence, 
+        'maximin': self._maximin_lhs,
+        'minimax': self._minimax_distance,
+        'uniform_grid': self._uniform_grid,
+        'sphere_packing': self._sphere_packing
+    }
+    
+    if method no in method_map:
+        raise ValueError(f"Unknown method '{method}'. Avilable: {List(method_map.keys())}")
+    print(f"Generating {n_points} design points using '{method}' method...")
+                       
+
