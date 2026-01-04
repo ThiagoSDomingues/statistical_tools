@@ -113,7 +113,7 @@ class DesignGenerator:
     assert np.all(X >= self.bounds.lower) and np.all(X <= self.bounds.upper), \ 
         "Points outside bounds"
     
-    print(f" ✓ Generated {n_points} design points)
+    print(f" ✓ Generated {n_points} design points")
     return X
                        
 
