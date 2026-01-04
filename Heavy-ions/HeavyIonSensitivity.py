@@ -41,4 +41,45 @@ class SensitivityResults:
     
     return "\n".join(lines)        
 
-### Next Step: SensitivityAnalyzer class
+class SensitivityAnalyzer:
+    """
+    Comprehensive sensitivity analysis for Gaussian Process emulators.
+    Supports both global and local sensitivity analysis methods.
+    """
+    
+    def __init__(
+        self,
+        emulator: Callable,
+        bounds: np.ndarray,
+        parameter_names: Optional[List[str]] = None,
+        seed: Optional[int] = None
+       
+    ):
+        """
+        Initialize sensitivity analyzer.
+        
+        Parameters
+        ----------
+        emulator : callable
+            Trained emulator that takes X (n_samples, n_params) and returns predictions
+            Should return (mean, variance) or just mean
+        bounds : np.ndarray, shape (n_params, 2)   
+            Parameter bounds [[lower1, upper1], [lower2, upper2], ...]
+        parameter_names : list of str, optional    
+            Names of parameters 
+        seed : int, optional
+            Random seed
+        """
+        self.emulator = emulator
+        self.bounds = np.asarray(bounds)
+        self.n_params = len(bounds)
+        
+        if parameter_names is None:
+            self.parameter_names = [f"param_{i}" for i in range(self.n_params)]
+        else:
+            self.parameter_names = parameter_names
+        
+        self.seed = seed
+        self.rng = np.random.RandomState(seed)
+        
+        print(f"✓ Sensitivity analyzer initialized for {self.n_params} parameters")
