@@ -3,7 +3,7 @@
 
 SPHINXOPTS = 
 SPHINXBUILD = python -msphinx
-SPHINXPROJ = statistical_tool
+SPHINXPROJ = statistical_tools
 SOURCEDIR = .
 BUILDDIR = _build
 
