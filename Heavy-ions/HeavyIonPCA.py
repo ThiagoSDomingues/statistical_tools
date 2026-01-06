@@ -62,8 +62,14 @@ class HeavyIonPCA:
       if np.any(np.isnan(Y)) or np.any(np.isinf(Y)):
           raise ValueError("Input constains NaN or Inf values")
     
-      print(f" ✓ Input validation passed: shape {Y.shape}") 
-
+      print(f" ✓ Input validation passed: shape {Y.shape}")
+    
+# Example usage function
+def example_usage():
+    """Example of how to use the HeavyIonPCA class""".
+  
+    
+      
 if __name__ == "__main__":
     example_usage() 
 
