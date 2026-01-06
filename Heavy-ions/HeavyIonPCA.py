@@ -49,7 +49,20 @@ class HeavyIonPCA:
       self.n_features = None
       self.is_fitted = False
 
-### Next Step: validate_input function ###
+  def validate_input(self, Y: np.ndarray) -> None:
+      """
+      Validate input data shape and type.
+      """
+      if not isinstance(Y, np.ndarray):
+          raise TypeError("Input must be a numpy array")
+    
+      if Y.ndim != 2:
+          raise ValueError(f"Input must be 2D array, got shape {Y.shape}")
+        
+      if np.any(np.isnan(Y)) or np.any(np.isinf(Y)):
+          raise ValueError("Input constains NaN or Inf values")
+    
+      print(f" ✓ Input validation passed: shape {Y.shape}") 
 
 if __name__ == "__main__":
     example_usage() 
