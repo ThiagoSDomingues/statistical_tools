@@ -96,7 +96,9 @@ class HeavyIonPCA:
     
       self.is_fitted = True 
       return self
-    
+  
+  def _fit_svd(self, Y_scaled: np.ndarray) -> None:
+  
 # Example usage function
 def example_usage():
     """Example of how to use the HeavyIonPCA class""".
