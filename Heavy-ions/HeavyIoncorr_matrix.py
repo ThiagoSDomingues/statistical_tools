@@ -50,3 +50,15 @@ ax[0].set_ylabel("Bind index")
 ax[1].errorbar(pt_bins, yields, yerr=sigma, fmt='ko', label='Central Value', capsize=4)
 
 # Plot a few samples
+for i in range(5):
+    ax[1].plot(pt_bins, correlated_samples[i], color='blue', alpha=0.3, label='Correlated Sample' if i==0 else "")
+    ax[1].plot(pt_bins, uncorrelated_samples[i], color='red', linestyle='--', alpha=0.3, label='Uncorrelated Sample' if i==0 else "")
+
+ax[1].set_yscale('log')
+ax[1].set_xlabel('$p_T$ [GeV/c]')
+ax[1].set_ylabel('$d^2N/dp_T dy$')
+ax[1].set_title("Impact of Correlations on Spectra Shape")
+ax[1].legend()
+
+plt.tight_layout()
+plt.show()
