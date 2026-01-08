@@ -15,6 +15,7 @@ pt_bins = np.linspace(0.5, 10, 20)
 n_bins = len(pt_bins)
 
 # Toy observable (power law pT spectra)
+# Simplified model: dN/dpt ~ pt^-6
 yields = 1000 * (pt_bins)**-6
 rel_error = 0.1 # 10% relative uncertainty
 sigma = yields * rel_error
@@ -28,4 +29,8 @@ for i in range(n_bins):
         dist = np.abs(pt_bins[i] - pt_bins[j])
         corr_matrix[i,j] = np.exp(-.5 * (dist / correlation_length)**2)
 
-# Next Steps: 4. Construct Covariance
+# Construct Covariance matrix: C_ij = rho_ij * sigma_i * sigma_j
+cov_matrix = np.outer(sigma, sigma) * corr_matrix
+
+# Generate Toy samples (correlated vs. uncorrelated)
+
