@@ -41,7 +41,12 @@ correlated_samples = np.random.multivariate_normal(yields, cov_matrix, n_samples
 fig, ax = plt.subplots(1, 2, figsize=(14, 6))
 
 # Plot A: correlation matrix
+sns.heatmap(corr_matrix, annot=False, cmap='viridis', ax=ax[0])
+ax[0].set_title("Modeled Correlation Matrix ($p_T$ bins)")
+ax[0].set_xlabel("Bin index")
+ax[0].set_ylabel("Bind index")
 
-# Plot B: effect on observables
+# Plot B: effect on observable
+ax[1].errorbar(pt_bins, yields, yerr=sigma, fmt='ko', label='Central Value', capsize=4)
 
-# Plotting few samples
+# Plot a few samples
