@@ -33,4 +33,15 @@ for i in range(n_bins):
 cov_matrix = np.outer(sigma, sigma) * corr_matrix
 
 # Generate Toy samples (correlated vs. uncorrelated)
+n_samples = 100 
+uncorrelated_samples = np.random.multivariate_normal(yields, np.diag(sigma**2), n_samples)
+correlated_samples = np.random.multivariate_normal(yields, cov_matrix, n_samples)
 
+# ---- Visualization ---- # 
+fig, ax = plt.subplots(1, 2, figsize=(14, 6))
+
+# Plot A: correlation matrix
+
+# Plot B: effect on observables
+
+# Plotting few samples
