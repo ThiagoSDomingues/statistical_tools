@@ -33,8 +33,9 @@ _ = plt.title("Gaussian process regression on noise-free dataset")
  
 X_train, y_train = load_experimental_data
 
-kernel = 
-gaussian_process = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=9)
+std = 0.4 # data standard deviation
+
+gaussian_process = GaussianProcessRegressor(kernel=kernel, alpha=std**2, n_restarts_optimizer=9)
 gaussian_process.fit(X_train, y_train)
 gaussian_process.kernel_
 
