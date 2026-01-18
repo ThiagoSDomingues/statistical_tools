@@ -27,3 +27,7 @@ plt.legend()
 plt.xlabel("kinematic variable")
 plt.ylabel("observable")
 _ = plt.title("Gaussian process regression on noise-free dataset")
+
+### Example: noisy targets
+ 
+X_train, y_train = load_experimental_data
