@@ -5,6 +5,7 @@ Script to use a Gaussian process regression to fit heavy-ion collisions experime
 """
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF
+import matplotlib.pyplot as plt
 
 # load experimental data (without uncertainties): training dataset
 X_train, y_train  = load_experimental_data
@@ -16,7 +17,7 @@ gaussian_process.fit(X_train, y_train)
 gaussian_process.kernel_ 
 
 # emulator's predictions: mean prediction and a confidence interval
-mean_prediciton, std_prediction = gaussian_process.predict(X_new, return_std=True)
+mean_prediction, std_prediction = gaussian_process.predict(X_new, return_std=True)
 
 # plotting predictions
 plt.plot()
