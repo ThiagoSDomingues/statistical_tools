@@ -40,4 +40,30 @@ gaussian_process.fit(X_train, y_train)
 gaussian_process.kernel_
 
 
+# plotting predictions
+plt.plot(X_new, y, label=r"$observable label$", linestyle="dotted")
+plt.errorbar(
+    X_train,
+    y_train_noisy,
+    std,
+    linestyle="None",
+    color="tab:black",
+    marker=".",
+    markersize=10,
+    label="Observations",
+)
+plt.plot(X, mean_prediction, label="Mean prediction")
+plt.fill_between(
+    X.ravel(),
+    mean_prediction - 1.96 * std_prediction,
+    mean_prediction + 1.96 * std_prediction,
+    color="tab:orange",
+    alpha=0.5,
+    label=r"95% confidence interval",
+)
+plt.legend()
+plt.xlabel("$kinematic variable$")
+plt.ylabel("$observable label$")
+_ = plt.title("Gaussian process regression on a noisy dataset")
+
 
