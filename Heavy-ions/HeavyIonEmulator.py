@@ -20,6 +20,21 @@ from dataclasses import dataclass
 import time
 
 
+class KernelComparison:
+    """Compare different kernels for GP emulation."""
+    
+    def __init__(
+        self,
+        X_train: np.ndarray
+        y_train: np.ndarray,
+        X_test: np.ndarray, 
+        y_test: np.ndarray, 
+        random_state: Optional[int] = None 
+    ):
+        """
+        Initialize kernel comparison.
+        """
+
 # Unfinished!
 def predict(self, X, return_cov=False, extra_std=0):
     """
