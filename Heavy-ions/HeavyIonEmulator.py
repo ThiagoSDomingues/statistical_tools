@@ -19,6 +19,16 @@ import warnings
 from dataclasses import dataclass
 import time
 
+@dataclass
+class EmulatorMetrics: 
+    """Container for emulator validation metrics."""
+    rmse: float 
+    mae: float
+    r2: float
+    max_error: float
+    mean_std: Optional[float] = None 
+    coverage_95: Optional[float] = None 
+    log_likelihood: Optional[float] = None
 
 class KernelComparison:
     """Compare different kernels for GP emulation."""
