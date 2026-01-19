@@ -121,4 +121,10 @@ def _random_sampling(self, n_points: int, **kwargs) -> np.ndarray:
     X_norm = self.rng.rand(n_points, self.dim)
     return self.bounds.denormalize(X_norm)
 
-def _latin_hypercube():
+def _latin_hypercube(
+    self, 
+    n_points: int,
+    criterion: str = 'maximin',
+    iterations: int = 1000,
+    **kwargs       
+) -> np.ndarray:
