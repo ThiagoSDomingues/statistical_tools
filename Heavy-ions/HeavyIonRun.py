@@ -10,6 +10,10 @@ print("Initializing: sampling the parameter space -- Generating design points")
 print("=" * 70)
 
 print("=" * 70)
+print("PCA: performing a principal component analysis")
+print("=" * 70)
+
+print("=" * 70)
 print("GP EMULATOR FRAMEWORK: FITTING A GPR")
 print("=" * 70)
 
@@ -18,3 +22,6 @@ print(f"\nDataset:")
 print(f"\nValidation metrics:")
 print(metrics)
 
+print("=" * 70)
+print("Sensitivity analysis")
+print("=" * 70)
