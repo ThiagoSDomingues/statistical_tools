@@ -115,5 +115,10 @@ class DesignGenerator:
     
     print(f" ✓ Generated {n_points} design points")
     return X
-                       
 
+def _random_sampling(self, n_points: int, **kwargs) -> np.ndarray:
+    """Pure random sampling (Monte Carlo)."""
+    X_norm = self.rng.rand(n_points, self.dim)
+    return self.bounds.denormalize(X_norm)
+
+def _latin_hypercube():
