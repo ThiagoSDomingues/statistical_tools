@@ -1,6 +1,6 @@
 ### Author: OptimusThi
 """
-Script to train Gaussian emualators.
+Script to train Gaussian process emulators for heavy-ion collisions.
 """
 import pickle
 import numpy as np
