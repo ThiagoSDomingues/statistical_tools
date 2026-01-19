@@ -128,3 +128,9 @@ def _latin_hypercube(
     iterations: int = 1000,
     **kwargs       
 ) -> np.ndarray:
+
+def _sobol_sequence(self, n_points: int, scramble: bool = True, **kwargs) -> np.ndarray:
+    """Sobol quasi-random sequence."""
+    sampler = qmc.Sobol(d=self.dim, scramble=scramble, seed=self.seed)
+    X_norm = sampler.random(n=n_points)
+    return self.bounds.denormalize(X_norm)    
