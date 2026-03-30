@@ -791,4 +791,4 @@ def example_usage():
     X_maximin_norm = bounds.normalize(X_maximin)
     X_sphere_norm = bounds.normalize(X_sphere)
     
-    print(f"Maximin score: {generator._maximin_score(X_maximin_norm)
+    print(f"Maximin score: {generator._maximin_score(X_maximin_norm)}")
